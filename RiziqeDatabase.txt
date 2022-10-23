@@ -1,0 +1,118 @@
+CREATE DATABASE RiziqFinal
+
+CREATE TABLE [dbo].[TBL_ADMIN](
+	[MEM_ID] [int] IDENTITY(1,1)PRIMARY KEY,
+	[ad_email] [nvarchar](50) NOT NULL unique,
+	[ad_password] [nvarchar](50) NOT NULL,
+	) 
+	INSERT INTO TBL_ADMIN VALUES('admin@gmail.com','123456')
+
+CREATE TABLE [dbo].[TBL_OCCUPATION](
+	[OCC_ID] [int] IDENTITY(1,1)PRIMARY KEY,
+	[OCC_TYPE] [nvarchar](50) NOT NULL unique,
+	) 
+	INSERT INTO TBL_OCCUPATION VALUES('Student')
+	INSERT INTO TBL_OCCUPATION VALUES('Businessman')
+	INSERT INTO TBL_OCCUPATION VALUES('Doctor')
+	INSERT INTO TBL_OCCUPATION VALUES('Engineer')
+	INSERT INTO TBL_OCCUPATION VALUES('Housewife')
+	INSERT INTO TBL_OCCUPATION VALUES('Immigrant')
+	INSERT INTO TBL_OCCUPATION VALUES('Day Labour')
+	INSERT INTO TBL_OCCUPATION VALUES('Others')
+
+CREATE TABLE [dbo].[TBL_MEMBERSHIP](
+	[MEM_ID] [int] IDENTITY(1,1)PRIMARY KEY,
+	[MEM_TYPE] [nvarchar](50) NOT NULL unique,
+	) 
+	INSERT INTO TBL_MEMBERSHIP VALUES('Volunteer')
+	INSERT INTO TBL_MEMBERSHIP VALUES('Donor')
+
+	SELECT * FROM TBL_MEMBERSHIP
+	SELECT * FROM TBL_OCCUPATION
+
+	CREATE TABLE [dbo].[TBL_USER](
+	[u_id] [int] IDENTITY(1,1)PRIMARY KEY,
+	[u_name] [nvarchar](50) NOT NULL,
+	[u_email] [nvarchar](50) NOT NULL unique,
+	[u_occupation] [int] FOREIGN KEY REFERENCES TBL_OCCUPATION(OCC_ID),
+	[u_contact] [nvarchar](50) NOT NULL unique,
+	[u_password] [nvarchar](50) NOT NULL,
+	[u_cpassword] [nvarchar](50) NOT NULL,
+	[u_type] [int] FOREIGN KEY REFERENCES TBL_MEMBERSHIP(MEM_ID),
+	[u_status] [int] default 0
+	)
+		SELECT * FROM TBL_USER
+	
+CREATE TABLE [dbo].[TBL_FEEDBACK]
+(
+	[f_id] [int] identity(1,1) primary key,
+	[f_name] [nvarchar](50) not null,
+	[f_email] [nvarchar](50) not null,
+	[f_contact] [nvarchar](50) not null,
+	[f_text] [nvarchar](500) not null,
+)
+CREATE TABLE [dbo].[TBL_NEEDTYPE](
+	[NEED_ID] [int] IDENTITY(1,1)PRIMARY KEY,
+	[NEED_TYPE] [nvarchar](50) NOT NULL unique,
+	) 
+	INSERT INTO TBL_NEEDTYPE VALUES('Money')
+	INSERT INTO TBL_NEEDTYPE VALUES('Dress')
+	INSERT INTO TBL_NEEDTYPE VALUES('Food')
+	INSERT INTO TBL_NEEDTYPE VALUES('other Accessories')
+
+	CREATE TABLE [dbo].[NeedHelp]
+(
+  [N_id] INT IDENTITY(1,1)PRIMARY KEY,
+  [N_Name] NVARCHAR(50) NOT NULL,
+  [N_Email] NVARCHAR(50) NOT NULL unique,
+  [N_contact] NVARCHAR(50) NOT NULL,
+  [N_Address] NVARCHAR(50) NOT NULL, 
+  [HelpType] [int] FOREIGN KEY REFERENCES TBL_NEEDTYPE(NEED_ID),
+  [Bkash] NVARCHAR(50) NOT NULL,
+  [Account] NVARCHAR(50) NOT NULL,
+  [Date] Date,
+  [Message] NVARCHAR(200) NOT NULL,
+  [N_status] [int] default 0
+)
+
+CREATE TABLE [dbo].[TBL_DONATE](
+	[d_id] [int] IDENTITY(1,1)PRIMARY KEY,
+	[d_name] [nvarchar](50) NOT NULL,
+	[d_cardname] [nvarchar](50) NOT NULL,
+	[d_cardnumber] [nvarchar](50) NOT NULL unique,
+	[d_validdate] Date,
+	[d_expiredate] Date,
+	[d_securitycode] NVARCHAR(50) NOT NULL,
+	[d_email] [nvarchar](50) NOT NULL unique,	
+	[d_address] [nvarchar](50) NOT NULL,
+	[d_contact] [nvarchar](50) NOT NULL unique,
+	[d_country] [nvarchar](50) NOT NULL,
+	[d_postcode] [nvarchar](50) NOT NULL unique,
+	[d_amount] [nvarchar](50) NOT NULL,
+	)
+
+	CREATE TABLE [dbo].[TBL_DONATEOthers](
+	[do_id] [int] IDENTITY(1,1)PRIMARY KEY,
+	[do_name] [nvarchar](50) NOT NULL,
+	[do_email] [nvarchar](50) NOT NULL unique,
+	[do_contact] [nvarchar](50) NOT NULL unique,	
+	[do_address] [nvarchar](50) NOT NULL,
+	 [do_ImagePath] nvarchar(MaX),
+	[do_HelpType] [int] FOREIGN KEY REFERENCES TBL_NEEDTYPE(NEED_ID),
+	[do_Quantity] [int] NOT NULL,
+	[do_Description] nvarchar(800),
+	[DO_status] [int] default 0
+	)
+
+Create table BlogPost
+(
+    BID int not null primary key identity(1,1),
+    BTitle  nvarchar(180),
+    BCategory nvarchar(150),
+    ImagePath nvarchar(MaX),
+    Description nvarchar(800),
+    Burl nvarchar(250),
+	[B_status] [int] default 0
+
+)
+select * from BlogPos

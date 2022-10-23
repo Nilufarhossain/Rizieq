@@ -1,0 +1,554 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RiziqFinalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BlogPost">
+          <Key>
+            <PropertyRef Name="BID" />
+          </Key>
+          <Property Name="BID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BTitle" Type="nvarchar" MaxLength="180" />
+          <Property Name="BCategory" Type="nvarchar" MaxLength="150" />
+          <Property Name="ImagePath" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar" MaxLength="800" />
+          <Property Name="Burl" Type="nvarchar" MaxLength="250" />
+          <Property Name="B_status" Type="int" />
+        </EntityType>
+        <EntityType Name="NeedHelp">
+          <Key>
+            <PropertyRef Name="N_id" />
+          </Key>
+          <Property Name="N_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="N_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="N_Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="N_contact" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="N_Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HelpType" Type="int" />
+          <Property Name="Bkash" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Account" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Message" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="N_status" Type="int" />
+        </EntityType>
+        <EntityType Name="TBL_ADMIN">
+          <Key>
+            <PropertyRef Name="MEM_ID" />
+          </Key>
+          <Property Name="MEM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad_email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ad_password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_DONATE">
+          <Key>
+            <PropertyRef Name="d_id" />
+          </Key>
+          <Property Name="d_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="d_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="d_cardname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="d_cardnumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="d_validdate" Type="date" />
+          <Property Name="d_expiredate" Type="date" />
+          <Property Name="d_securitycode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="d_email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="d_address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="d_contact" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="d_country" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="d_postcode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="d_amount" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_DONATEOthers">
+          <Key>
+            <PropertyRef Name="do_id" />
+          </Key>
+          <Property Name="do_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="do_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="do_email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="do_contact" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="do_address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="do_ImagePath" Type="nvarchar(max)" />
+          <Property Name="do_HelpType" Type="int" />
+          <Property Name="do_Quantity" Type="int" Nullable="false" />
+          <Property Name="do_Description" Type="nvarchar" MaxLength="800" />
+          <Property Name="DO_status" Type="int" />
+        </EntityType>
+        <EntityType Name="TBL_FEEDBACK">
+          <Key>
+            <PropertyRef Name="f_id" />
+          </Key>
+          <Property Name="f_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="f_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="f_email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="f_contact" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="f_text" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_MEMBERSHIP">
+          <Key>
+            <PropertyRef Name="MEM_ID" />
+          </Key>
+          <Property Name="MEM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MEM_TYPE" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_NEEDTYPE">
+          <Key>
+            <PropertyRef Name="NEED_ID" />
+          </Key>
+          <Property Name="NEED_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NEED_TYPE" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_OCCUPATION">
+          <Key>
+            <PropertyRef Name="OCC_ID" />
+          </Key>
+          <Property Name="OCC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OCC_TYPE" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_USER">
+          <Key>
+            <PropertyRef Name="u_id" />
+          </Key>
+          <Property Name="u_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="u_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="u_email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="u_occupation" Type="int" />
+          <Property Name="u_contact" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="u_password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="u_cpassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="u_type" Type="int" />
+          <Property Name="u_status" Type="int" />
+        </EntityType>
+        <Association Name="FK__NeedHelp__HelpTy__25869641">
+          <End Role="TBL_NEEDTYPE" Type="Self.TBL_NEEDTYPE" Multiplicity="0..1" />
+          <End Role="NeedHelp" Type="Self.NeedHelp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_NEEDTYPE">
+              <PropertyRef Name="NEED_ID" />
+            </Principal>
+            <Dependent Role="NeedHelp">
+              <PropertyRef Name="HelpType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBL_DONAT__do_He__30F848ED">
+          <End Role="TBL_NEEDTYPE" Type="Self.TBL_NEEDTYPE" Multiplicity="0..1" />
+          <End Role="TBL_DONATEOthers" Type="Self.TBL_DONATEOthers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_NEEDTYPE">
+              <PropertyRef Name="NEED_ID" />
+            </Principal>
+            <Dependent Role="TBL_DONATEOthers">
+              <PropertyRef Name="do_HelpType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBL_USER__u_occu__1B0907CE">
+          <End Role="TBL_OCCUPATION" Type="Self.TBL_OCCUPATION" Multiplicity="0..1" />
+          <End Role="TBL_USER" Type="Self.TBL_USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_OCCUPATION">
+              <PropertyRef Name="OCC_ID" />
+            </Principal>
+            <Dependent Role="TBL_USER">
+              <PropertyRef Name="u_occupation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBL_USER__u_type__1BFD2C07">
+          <End Role="TBL_MEMBERSHIP" Type="Self.TBL_MEMBERSHIP" Multiplicity="0..1" />
+          <End Role="TBL_USER" Type="Self.TBL_USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_MEMBERSHIP">
+              <PropertyRef Name="MEM_ID" />
+            </Principal>
+            <Dependent Role="TBL_USER">
+              <PropertyRef Name="u_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RiziqFinalModelStoreContainer">
+          <EntitySet Name="BlogPost" EntityType="Self.BlogPost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NeedHelp" EntityType="Self.NeedHelp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_ADMIN" EntityType="Self.TBL_ADMIN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_DONATE" EntityType="Self.TBL_DONATE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_DONATEOthers" EntityType="Self.TBL_DONATEOthers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_FEEDBACK" EntityType="Self.TBL_FEEDBACK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_MEMBERSHIP" EntityType="Self.TBL_MEMBERSHIP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_NEEDTYPE" EntityType="Self.TBL_NEEDTYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_OCCUPATION" EntityType="Self.TBL_OCCUPATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_USER" EntityType="Self.TBL_USER" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__NeedHelp__HelpTy__25869641" Association="Self.FK__NeedHelp__HelpTy__25869641">
+            <End Role="TBL_NEEDTYPE" EntitySet="TBL_NEEDTYPE" />
+            <End Role="NeedHelp" EntitySet="NeedHelp" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBL_DONAT__do_He__30F848ED" Association="Self.FK__TBL_DONAT__do_He__30F848ED">
+            <End Role="TBL_NEEDTYPE" EntitySet="TBL_NEEDTYPE" />
+            <End Role="TBL_DONATEOthers" EntitySet="TBL_DONATEOthers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBL_USER__u_occu__1B0907CE" Association="Self.FK__TBL_USER__u_occu__1B0907CE">
+            <End Role="TBL_OCCUPATION" EntitySet="TBL_OCCUPATION" />
+            <End Role="TBL_USER" EntitySet="TBL_USER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBL_USER__u_type__1BFD2C07" Association="Self.FK__TBL_USER__u_type__1BFD2C07">
+            <End Role="TBL_MEMBERSHIP" EntitySet="TBL_MEMBERSHIP" />
+            <End Role="TBL_USER" EntitySet="TBL_USER" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RiziqFinalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BlogPost">
+          <Key>
+            <PropertyRef Name="BID" />
+          </Key>
+          <Property Name="BID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BTitle" Type="String" MaxLength="180" FixedLength="false" Unicode="true" />
+          <Property Name="BCategory" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="Burl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="B_status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="NeedHelp">
+          <Key>
+            <PropertyRef Name="N_id" />
+          </Key>
+          <Property Name="N_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="N_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="N_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="N_contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="N_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HelpType" Type="Int32" />
+          <Property Name="Bkash" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Account" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Message" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="N_status" Type="Int32" />
+          <NavigationProperty Name="TBL_NEEDTYPE" Relationship="Self.FK__NeedHelp__HelpTy__25869641" FromRole="NeedHelp" ToRole="TBL_NEEDTYPE" />
+        </EntityType>
+        <EntityType Name="TBL_ADMIN">
+          <Key>
+            <PropertyRef Name="MEM_ID" />
+          </Key>
+          <Property Name="MEM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ad_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_DONATE">
+          <Key>
+            <PropertyRef Name="d_id" />
+          </Key>
+          <Property Name="d_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="d_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="d_cardname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="d_cardnumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="d_validdate" Type="DateTime" Precision="0" />
+          <Property Name="d_expiredate" Type="DateTime" Precision="0" />
+          <Property Name="d_securitycode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="d_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="d_address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="d_contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="d_country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="d_postcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="d_amount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_DONATEOthers">
+          <Key>
+            <PropertyRef Name="do_id" />
+          </Key>
+          <Property Name="do_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="do_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="do_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="do_contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="do_address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="do_ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="do_HelpType" Type="Int32" />
+          <Property Name="do_Quantity" Type="Int32" Nullable="false" />
+          <Property Name="do_Description" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="DO_status" Type="Int32" />
+          <NavigationProperty Name="TBL_NEEDTYPE" Relationship="Self.FK__TBL_DONAT__do_He__30F848ED" FromRole="TBL_DONATEOthers" ToRole="TBL_NEEDTYPE" />
+        </EntityType>
+        <EntityType Name="TBL_FEEDBACK">
+          <Key>
+            <PropertyRef Name="f_id" />
+          </Key>
+          <Property Name="f_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="f_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="f_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="f_contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="f_text" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_MEMBERSHIP">
+          <Key>
+            <PropertyRef Name="MEM_ID" />
+          </Key>
+          <Property Name="MEM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MEM_TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TBL_USER" Relationship="Self.FK__TBL_USER__u_type__1BFD2C07" FromRole="TBL_MEMBERSHIP" ToRole="TBL_USER" />
+        </EntityType>
+        <EntityType Name="TBL_NEEDTYPE">
+          <Key>
+            <PropertyRef Name="NEED_ID" />
+          </Key>
+          <Property Name="NEED_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NEED_TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="NeedHelps" Relationship="Self.FK__NeedHelp__HelpTy__25869641" FromRole="TBL_NEEDTYPE" ToRole="NeedHelp" />
+          <NavigationProperty Name="TBL_DONATEOthers" Relationship="Self.FK__TBL_DONAT__do_He__30F848ED" FromRole="TBL_NEEDTYPE" ToRole="TBL_DONATEOthers" />
+        </EntityType>
+        <EntityType Name="TBL_OCCUPATION">
+          <Key>
+            <PropertyRef Name="OCC_ID" />
+          </Key>
+          <Property Name="OCC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OCC_TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TBL_USER" Relationship="Self.FK__TBL_USER__u_occu__1B0907CE" FromRole="TBL_OCCUPATION" ToRole="TBL_USER" />
+        </EntityType>
+        <EntityType Name="TBL_USER">
+          <Key>
+            <PropertyRef Name="u_id" />
+          </Key>
+          <Property Name="u_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="u_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="u_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="u_occupation" Type="Int32" />
+          <Property Name="u_contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="u_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="u_cpassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="u_type" Type="Int32" />
+          <Property Name="u_status" Type="Int32" />
+          <NavigationProperty Name="TBL_MEMBERSHIP" Relationship="Self.FK__TBL_USER__u_type__1BFD2C07" FromRole="TBL_USER" ToRole="TBL_MEMBERSHIP" />
+          <NavigationProperty Name="TBL_OCCUPATION" Relationship="Self.FK__TBL_USER__u_occu__1B0907CE" FromRole="TBL_USER" ToRole="TBL_OCCUPATION" />
+        </EntityType>
+        <Association Name="FK__NeedHelp__HelpTy__25869641">
+          <End Role="TBL_NEEDTYPE" Type="Self.TBL_NEEDTYPE" Multiplicity="0..1" />
+          <End Role="NeedHelp" Type="Self.NeedHelp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_NEEDTYPE">
+              <PropertyRef Name="NEED_ID" />
+            </Principal>
+            <Dependent Role="NeedHelp">
+              <PropertyRef Name="HelpType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBL_DONAT__do_He__30F848ED">
+          <End Role="TBL_NEEDTYPE" Type="Self.TBL_NEEDTYPE" Multiplicity="0..1" />
+          <End Role="TBL_DONATEOthers" Type="Self.TBL_DONATEOthers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_NEEDTYPE">
+              <PropertyRef Name="NEED_ID" />
+            </Principal>
+            <Dependent Role="TBL_DONATEOthers">
+              <PropertyRef Name="do_HelpType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBL_USER__u_type__1BFD2C07">
+          <End Role="TBL_MEMBERSHIP" Type="Self.TBL_MEMBERSHIP" Multiplicity="0..1" />
+          <End Role="TBL_USER" Type="Self.TBL_USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_MEMBERSHIP">
+              <PropertyRef Name="MEM_ID" />
+            </Principal>
+            <Dependent Role="TBL_USER">
+              <PropertyRef Name="u_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TBL_USER__u_occu__1B0907CE">
+          <End Role="TBL_OCCUPATION" Type="Self.TBL_OCCUPATION" Multiplicity="0..1" />
+          <End Role="TBL_USER" Type="Self.TBL_USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_OCCUPATION">
+              <PropertyRef Name="OCC_ID" />
+            </Principal>
+            <Dependent Role="TBL_USER">
+              <PropertyRef Name="u_occupation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RiziqFinalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BlogPosts" EntityType="Self.BlogPost" />
+          <EntitySet Name="NeedHelps" EntityType="Self.NeedHelp" />
+          <EntitySet Name="TBL_ADMIN" EntityType="Self.TBL_ADMIN" />
+          <EntitySet Name="TBL_DONATE" EntityType="Self.TBL_DONATE" />
+          <EntitySet Name="TBL_DONATEOthers" EntityType="Self.TBL_DONATEOthers" />
+          <EntitySet Name="TBL_FEEDBACK" EntityType="Self.TBL_FEEDBACK" />
+          <EntitySet Name="TBL_MEMBERSHIP" EntityType="Self.TBL_MEMBERSHIP" />
+          <EntitySet Name="TBL_NEEDTYPE" EntityType="Self.TBL_NEEDTYPE" />
+          <EntitySet Name="TBL_OCCUPATION" EntityType="Self.TBL_OCCUPATION" />
+          <EntitySet Name="TBL_USER" EntityType="Self.TBL_USER" />
+          <AssociationSet Name="FK__NeedHelp__HelpTy__25869641" Association="Self.FK__NeedHelp__HelpTy__25869641">
+            <End Role="TBL_NEEDTYPE" EntitySet="TBL_NEEDTYPE" />
+            <End Role="NeedHelp" EntitySet="NeedHelps" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBL_DONAT__do_He__30F848ED" Association="Self.FK__TBL_DONAT__do_He__30F848ED">
+            <End Role="TBL_NEEDTYPE" EntitySet="TBL_NEEDTYPE" />
+            <End Role="TBL_DONATEOthers" EntitySet="TBL_DONATEOthers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBL_USER__u_type__1BFD2C07" Association="Self.FK__TBL_USER__u_type__1BFD2C07">
+            <End Role="TBL_MEMBERSHIP" EntitySet="TBL_MEMBERSHIP" />
+            <End Role="TBL_USER" EntitySet="TBL_USER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TBL_USER__u_occu__1B0907CE" Association="Self.FK__TBL_USER__u_occu__1B0907CE">
+            <End Role="TBL_OCCUPATION" EntitySet="TBL_OCCUPATION" />
+            <End Role="TBL_USER" EntitySet="TBL_USER" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RiziqFinalModelStoreContainer" CdmEntityContainer="RiziqFinalEntities">
+          <EntitySetMapping Name="BlogPosts">
+            <EntityTypeMapping TypeName="RiziqFinalModel.BlogPost">
+              <MappingFragment StoreEntitySet="BlogPost">
+                <ScalarProperty Name="BID" ColumnName="BID" />
+                <ScalarProperty Name="BTitle" ColumnName="BTitle" />
+                <ScalarProperty Name="BCategory" ColumnName="BCategory" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Burl" ColumnName="Burl" />
+                <ScalarProperty Name="B_status" ColumnName="B_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NeedHelps">
+            <EntityTypeMapping TypeName="RiziqFinalModel.NeedHelp">
+              <MappingFragment StoreEntitySet="NeedHelp">
+                <ScalarProperty Name="N_id" ColumnName="N_id" />
+                <ScalarProperty Name="N_Name" ColumnName="N_Name" />
+                <ScalarProperty Name="N_Email" ColumnName="N_Email" />
+                <ScalarProperty Name="N_contact" ColumnName="N_contact" />
+                <ScalarProperty Name="N_Address" ColumnName="N_Address" />
+                <ScalarProperty Name="HelpType" ColumnName="HelpType" />
+                <ScalarProperty Name="Bkash" ColumnName="Bkash" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="N_status" ColumnName="N_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_ADMIN">
+            <EntityTypeMapping TypeName="RiziqFinalModel.TBL_ADMIN">
+              <MappingFragment StoreEntitySet="TBL_ADMIN">
+                <ScalarProperty Name="MEM_ID" ColumnName="MEM_ID" />
+                <ScalarProperty Name="ad_email" ColumnName="ad_email" />
+                <ScalarProperty Name="ad_password" ColumnName="ad_password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_DONATE">
+            <EntityTypeMapping TypeName="RiziqFinalModel.TBL_DONATE">
+              <MappingFragment StoreEntitySet="TBL_DONATE">
+                <ScalarProperty Name="d_id" ColumnName="d_id" />
+                <ScalarProperty Name="d_name" ColumnName="d_name" />
+                <ScalarProperty Name="d_cardname" ColumnName="d_cardname" />
+                <ScalarProperty Name="d_cardnumber" ColumnName="d_cardnumber" />
+                <ScalarProperty Name="d_validdate" ColumnName="d_validdate" />
+                <ScalarProperty Name="d_expiredate" ColumnName="d_expiredate" />
+                <ScalarProperty Name="d_securitycode" ColumnName="d_securitycode" />
+                <ScalarProperty Name="d_email" ColumnName="d_email" />
+                <ScalarProperty Name="d_address" ColumnName="d_address" />
+                <ScalarProperty Name="d_contact" ColumnName="d_contact" />
+                <ScalarProperty Name="d_country" ColumnName="d_country" />
+                <ScalarProperty Name="d_postcode" ColumnName="d_postcode" />
+                <ScalarProperty Name="d_amount" ColumnName="d_amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_DONATEOthers">
+            <EntityTypeMapping TypeName="RiziqFinalModel.TBL_DONATEOthers">
+              <MappingFragment StoreEntitySet="TBL_DONATEOthers">
+                <ScalarProperty Name="do_id" ColumnName="do_id" />
+                <ScalarProperty Name="do_name" ColumnName="do_name" />
+                <ScalarProperty Name="do_email" ColumnName="do_email" />
+                <ScalarProperty Name="do_contact" ColumnName="do_contact" />
+                <ScalarProperty Name="do_address" ColumnName="do_address" />
+                <ScalarProperty Name="do_ImagePath" ColumnName="do_ImagePath" />
+                <ScalarProperty Name="do_HelpType" ColumnName="do_HelpType" />
+                <ScalarProperty Name="do_Quantity" ColumnName="do_Quantity" />
+                <ScalarProperty Name="do_Description" ColumnName="do_Description" />
+                <ScalarProperty Name="DO_status" ColumnName="DO_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_FEEDBACK">
+            <EntityTypeMapping TypeName="RiziqFinalModel.TBL_FEEDBACK">
+              <MappingFragment StoreEntitySet="TBL_FEEDBACK">
+                <ScalarProperty Name="f_id" ColumnName="f_id" />
+                <ScalarProperty Name="f_name" ColumnName="f_name" />
+                <ScalarProperty Name="f_email" ColumnName="f_email" />
+                <ScalarProperty Name="f_contact" ColumnName="f_contact" />
+                <ScalarProperty Name="f_text" ColumnName="f_text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_MEMBERSHIP">
+            <EntityTypeMapping TypeName="RiziqFinalModel.TBL_MEMBERSHIP">
+              <MappingFragment StoreEntitySet="TBL_MEMBERSHIP">
+                <ScalarProperty Name="MEM_ID" ColumnName="MEM_ID" />
+                <ScalarProperty Name="MEM_TYPE" ColumnName="MEM_TYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_NEEDTYPE">
+            <EntityTypeMapping TypeName="RiziqFinalModel.TBL_NEEDTYPE">
+              <MappingFragment StoreEntitySet="TBL_NEEDTYPE">
+                <ScalarProperty Name="NEED_ID" ColumnName="NEED_ID" />
+                <ScalarProperty Name="NEED_TYPE" ColumnName="NEED_TYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_OCCUPATION">
+            <EntityTypeMapping TypeName="RiziqFinalModel.TBL_OCCUPATION">
+              <MappingFragment StoreEntitySet="TBL_OCCUPATION">
+                <ScalarProperty Name="OCC_ID" ColumnName="OCC_ID" />
+                <ScalarProperty Name="OCC_TYPE" ColumnName="OCC_TYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_USER">
+            <EntityTypeMapping TypeName="RiziqFinalModel.TBL_USER">
+              <MappingFragment StoreEntitySet="TBL_USER">
+                <ScalarProperty Name="u_id" ColumnName="u_id" />
+                <ScalarProperty Name="u_name" ColumnName="u_name" />
+                <ScalarProperty Name="u_email" ColumnName="u_email" />
+                <ScalarProperty Name="u_occupation" ColumnName="u_occupation" />
+                <ScalarProperty Name="u_contact" ColumnName="u_contact" />
+                <ScalarProperty Name="u_password" ColumnName="u_password" />
+                <ScalarProperty Name="u_cpassword" ColumnName="u_cpassword" />
+                <ScalarProperty Name="u_type" ColumnName="u_type" />
+                <ScalarProperty Name="u_status" ColumnName="u_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
